@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jogo da velha ultimate</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!--Menu do jogo-->
+    <div id="tela-menu" class="tela ativa">
+        <div class="container">
+            <h1>Jogo da Velha</h1>
+            <p>Escolha seu modo de jogo:</p>
+
+            <div class="options">
+                <button class="btn-modo" data-modo="solo">
+                    <div class="Icon">🤖</div>
+                        <div>
+                            <h3>Jogar Solo</h3>
+                            <p>Conta o PC</p>
+                        </div>
+                    <span class="select">▶</span>
+                </button>
+                
+                <button class="btn-modo" data-modo="multiplayer">
+                    <div class="Icon">👥</div>
+                        <div>
+                            <h3>Jogar em Dupla</h3>
+                            <p>Dois jogadores</p>
+                        </div>
+                    <span class="select">▶</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+<!--Dificuldade contra bot-->
+<div id="tela-dificuldade" class="tela">
+    <div class="container">
+        <button class="btn-voltar" id="voltar-menu">← Voltar</button>
+        <h2>🤖 Escolha a dificuldade:</h2>
+        <p>você joga com X, PC joga com O</p>
+        <div class="dificult-option">
+            <button class="dificult-btn" data-dificuldade="facil">
+                <div class="beguinner">🐣 Fácil</div>
+                <p>Modo fácil para iniciantes</p>
+            </button>
+
+            <button class="dificult-btn" data-dificuldade="intermediate">
+                <div class="intermediate">🐥 Médio</div>
+                <p>Modo intermediário PC bloqueia vitórias</p>
+            </button>
+
+            <button class="dificult-btn" data-dificuldade="hard">
+                <div class="hard">🦅 Difícil</div>
+                <p>Modo Difícil, o PC é imbatível</p>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!--Tela do jogo-->
+<div id="tela-jogo" class="tela">
+    <div class="container">
+        <header class="game-header">
+            <div class="info-game">
+                <h2 id="game-title">Jogo da Velha</h2>
+                <div class="status">
+                    <span id="dificult-info" class="badge-dificult"></span>
+                    <div class="placar">
+                        <div class="X-player">X: <span id="X-score">0</span></div>
+                        <div class="O-player">O: <span id="O-score">0</span></div>
+                    </div>
+                </div>
+            </div>
+            <button id="menu-btn" class="btn-menu">☰ Menu</button>
+        </header>
+        <!--Tabuleiro do jogo-->
+        <main class="gameboard">
+            <div class="celula" data-pos="0"></div>
+            <div class="celula" data-pos="1"></div>
+            <div class="celula" data-pos="2"></div>
+            <div class="celula" data-pos="3"></div>
+            <div class="celula" data-pos="4"></div>
+            <div class="celula" data-pos="5"></div>
+            <div class="celula" data-pos="6"></div>
+            <div class="celula" data-pos="7"></div>
+            <div class="celula" data-pos="8"></div>
+        </main>
+        <!--Mensagem de vitória ou empate-->
+        <div class="turn-mensage" id="turn-mensage"></div>
+        <div class="result-mensage" id="result-mensage">
+            <div id="result-text">
+                <button id="btn-restart">⚔️ Revanche</button>
+                <button id="btn-menu">🏠 Menu Principal</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
