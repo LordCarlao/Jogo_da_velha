@@ -212,3 +212,56 @@ h2, h3{
     background: #667eea;
     color: #fff;
 }
+
+/*=========================================
+    tabuleiro do jogo
+==========================================*/
+.gameboard{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1rem;
+    max-width: 400px;
+    margin-top: 2rem auto;
+    padding: 2rem;
+    background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+    border-radius: 20px;
+    box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.05);
+
+}
+.cell {
+    aspect-ratio: 1;
+    background: #fff;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: 900;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.cell:hover:not(.occupied) {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    border-color: #4ecdc4;
+}
+
+.cell.x::before {
+    content: "❌";
+    animation: girar 0.5s ease;
+}
+.cell.o::before {
+    content: "⭕";
+    animation: pulsar 0.5s ease;
+}
+
+.cell.occupied {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
