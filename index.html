@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jogo da velha ultimate</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
 <body>
     <!--Menu do jogo-->
@@ -15,7 +18,7 @@
 
             <div class="options">
                 <button class="btn-modo" data-modo="solo">
-                    <div class="Icon">🤖</div>
+                    <div class="icon">🤖</div>
                         <div>
                             <h3>Jogar Solo</h3>
                             <p>Conta o PC</p>
@@ -24,7 +27,7 @@
                 </button>
                 
                 <button class="btn-modo" data-modo="multiplayer">
-                    <div class="Icon">👥</div>
+                    <div class="icon">👥</div>
                         <div>
                             <h3>Jogar em Dupla</h3>
                             <p>Dois jogadores</p>
@@ -41,6 +44,7 @@
         <button class="btn-voltar" id="voltar-menu">← Voltar</button>
         <h2>🤖 Escolha a dificuldade:</h2>
         <p>você joga com X, PC joga com O</p>
+        
         <div class="dificult-option">
             <button class="dificult-btn" data-dificuldade="facil">
                 <div class="beguinner">🐣 Fácil</div>
@@ -63,9 +67,11 @@
 <!--Tela do jogo-->
 <div id="tela-jogo" class="tela">
     <div class="container">
+        
         <header class="game-header">
             <div class="info-game">
                 <h2 id="game-title">Jogo da Velha</h2>
+                
                 <div class="status">
                     <span id="dificult-info" class="badge-dificult"></span>
                     <div class="placar">
