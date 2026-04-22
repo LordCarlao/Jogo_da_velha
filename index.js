@@ -6,7 +6,7 @@ let currentPlayer = 'X'; // Jogador atual
 let gameactive = true; // Jogo ativo
 let modoJogo = ''; // Modo de jogo selecionado
 let dificuldade = ''; // Dificuldade do modo solo
-let playerXWins = 0, playerOWins = 0,;//placar de vitórias
+let playerXWins = 0, playerOWins = 0;//placar de vitórias
 
 // Elementos html
 const telas = {
@@ -17,7 +17,7 @@ const telas = {
 const elementos = {
     celulas: document.querySelectorAll('.cell'),
     mensagemTurno: document.getElementById('turn-mensage'),
-    mensagemResultado: dicument.getelementById('result-mensage'),
+    mensagemResultado: document.getelementById('result-mensage'),
     resultText: document.getElementById('result-text'),
     PlacarX: document.getElementById('X-score'),
     PlacarO: document.getElementById('O-score'),
@@ -41,3 +41,55 @@ document.querySelectorAll('.dificult-btn').forEach(btn => {
         iniciarJogo('solo');
     });
 });
+
+//================================================================
+//  Iniciar jogo
+//================================================================
+function iniciarJogo(modo) {
+    modoJogo = modo;
+
+    //configurar título e badge de dificuldade
+    if (modo === 'solo'){ 
+        elementos.tituloJogo.textContent = `solo - ${dificuldade.charAt(0).toUpperCase() + dificuldade.slice(1)}`;
+        const badges = {
+            Facil: '🐣 Fácil',
+            medio: '🐥 Médio',
+            dificil: '🦅 Imbatível'
+        };
+        elementos.badgeDificuldade.textContent = badges[dificuldade];
+        elementos.badgeDificuldade.style.display = 'none';
+    }
+    mostrarTela('jogo');
+    resetarJogo();
+}
+//================================================================
+//  Lógica do jogo
+//================================================================
+elementos.celulas.forEach(celula=>{
+    celula.addEventListener('click', handleclickcelula);
+});
+function handleclickcelula(e){
+    const position = parseInt(e.targuet.dataset.pos);
+
+    // ignorar se já ocupada ou jogo inativo
+    if (tabuleiro [position] !== '' || !gameactive) return;
+
+    // jogador joga
+    tabuleiro[position] = currentPlayer;
+    e.targuet.classList.add(currentPlayer.toLowerCase());
+
+    if (verificarVitoria()) {
+        finalizarjogo(`${currentPlayer} venceu!`);
+        atualizarPlacar(currentPlayer);
+        return;
+    }
+    // troca de jogador 
+    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+    atualizarMensagemTurno();
+
+    // se modo solo e vez do bot, o bot joga
+
+    if (modoJogo === 'solo' && currentPlayer === 'O' && gameactive) {
+        setTimeout(() => jogadaBot(), 500); // delay para simular pensamento do bot
+    }
+}
