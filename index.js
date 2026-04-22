@@ -25,4 +25,19 @@ const elementos = {
     badgeDificuldade: document.getElementById('dificult-info')
 };
 
+//================================================================
+//  navegação entre telas
+//================================================================
+function mostrarTela(telaNome) {
+    Object.values(telas).forEach(tela => {
+        tela.classList.remove('active');
+    });
+    telas[telaNome].classList.add('active');
+}
 
+document.querySelectorAll('.dificult-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        dificuldade = btn.dataset.dificuldade;
+        iniciarJogo('solo');
+    });
+});
